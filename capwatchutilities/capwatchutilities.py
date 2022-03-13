@@ -60,24 +60,22 @@ def main():
                           admin_client_id=json_tokens["admin_client_id"],
                           defaultLicense=json_tokens["defaultLicense"]
                           )
-    if(cwuA.process_groups):
-        logging.info( "--------------------------------------------------------------------")
-        logging.info(" - Processing Groups")
-        #scanbool=office_inst.loadgroups(printLogs=True)
-        (groupBool)=office_inst.groupMaintenance(theWing,cwuA,itJSON,cwuA.activerun,printLogs=True)
-
-    else:
-        logging.info( "--------------------------------------------------------------------")
-        logging.info(" - Diagnostic Checks on Office 365 organizations [FINISHED]")
-        scanReturn=office_inst.scanCAPIDs(printLogs=True)
-        logging.info(" - All accounts have an account issued with Name, RANK and CAPID - [TESTING]")
-        (acctReturn,itJSONret)=office_inst.scanUNITs(theWing,cwuA,itJSON,cwuA.activerun,printLogs=True)
-        logging.info(" - [NOT FINISHED] - All accounts have a backup email (otherMail) assigned ")
-        logging.info(" - [NOT FINISHED] - Check Squadron CC all have aliases assigned ")
-        # History for each CAPID can be references as itJSON["NNNNNN"] where N is the local capid
-        wingJson.save_json_file(itJSONret,"it."+cwuA.todays_date+".json",print_logs=True)
-        logging.info("-----------------------------------")
-
+    #if(cwuA.process_groups):
+    #else:
+    logging.info( "--------------------------------------------------------------------")
+    logging.info(" - Diagnostic Checks on Office 365 organizations [FINISHED]")
+    scanReturn=office_inst.scanCAPIDs(printLogs=True)
+    logging.info( "--------------------------------------------------------------------")
+    logging.info(" - All accounts have an account issued with Name, RANK and CAPID - [TESTING]")
+    (acctReturn,itJSONret)=office_inst.scanUNITs(theWing,cwuA,itJSON,cwuA.activerun,printLogs=True)
+    logging.info(" - [NOT FINISHED] - All accounts have a backup email (otherMail) assigned ")
+    logging.info(" - [NOT FINISHED] - Check Squadron CC all have aliases assigned ")
+    # History for each CAPID can be references as itJSON["NNNNNN"] where N is the local capid
+    wingJson.save_json_file(itJSONret,"it."+cwuA.todays_date+".json",print_logs=True)
+    logging.info( "--------------------------------------------------------------------")
+    logging.info(" - Processing Groups")
+    (groupBool)=office_inst.groupMaintenance(theWing,cwuA,itJSON,cwuA.activerun,printLogs=True)
+    logging.info( "--------------------------------------------------------------------")
 
     sys.exit(0)
 

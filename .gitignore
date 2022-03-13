@@ -6,6 +6,10 @@ __pycache__/
 # C extensions
 *.so
 
+# CAPWATCH SPECIFIC
+it.json
+O365.json
+
 # Distribution / packaging
 .Python
 build/

@@ -28,6 +28,7 @@ class cwuArguments():
         self.process_requests    = False
         self.test_this           = True
         self.path                = ""
+        self.o365Admin           = "no_one@contoso.com"
         self.password            = "myPassw0rd!"
         self.capnhqurl           = "api/get.me"
         self.baseurl             = "www.myurl.com"
